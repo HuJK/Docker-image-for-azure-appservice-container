@@ -29,7 +29,7 @@ add-apt-repository universe
 add-apt-repository ppa:longsleep/golang-backports
 apt-get -y update
 apt-get -y dist-upgrade
-apt-get -y install apt-utils runit locales openssh-server autossh cron vim git sudo rsync nginx-extras jq gettext build-essential
+apt-get -y install apt-utils runit locales openssh-server autossh cron vim git sudo rsync nginx-extras jq gettext build-essential tcptraceroute
 apt-get -y install mysql-client mysql-server unzip \
  php-fpm php-common php-mbstring php-xmlrpc php-soap  php-gd php-xml php-intl php-mysql php-cli php-zip php-curl \
  fish zsh tmux htop thefuck wget curl aria2 lsof tree ncdu \
@@ -48,6 +48,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf ;  ~/.fzf/install
 sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended"
 rm -rf /var/lib/apt/lists/* ; localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 ; locale-gen en_US.UTF-8
 npm install -g configurable-http-proxy
+wget http://www.vdberg.org/~richard/tcpping -O /usr/bin/tcping
+chmod 755 /usr/bin/tcping
 echo "Patch runit"
 gcc -shared -std=c99 -Wall -O2 -fPIC -D_POSIX_SOURCE -D_GNU_SOURCE  -Wl,--no-as-needed -ldl -o /lib/runit-docker.so /tmp/runit-docker.c
 
