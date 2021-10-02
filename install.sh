@@ -29,7 +29,7 @@ add-apt-repository universe
 add-apt-repository ppa:longsleep/golang-backports
 apt-get -y update
 apt-get -y dist-upgrade
-apt-get -y install apt-utils runit locales openssh-server autossh cron vim git sudo rsync nginx-extras jq gettext build-essential tcptraceroute
+apt-get -y install apt-utils runit locales openssh-server autossh cron vim git sudo rsync nginx-extras jq gettext build-essential tcptraceroute jq
 apt-get -y install mysql-client mysql-server unzip \
  php-fpm php-common php-mbstring php-xmlrpc php-soap  php-gd php-xml php-intl php-mysql php-cli php-zip php-curl \
  fish zsh tmux htop thefuck wget curl aria2 lsof tree ncdu \

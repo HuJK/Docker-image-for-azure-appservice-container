@@ -1,0 +1,7 @@
+#!/bin/bash
+. /.denv
+delay="$1"
+if [[ "$delay" == "now" ]] || [[ "$delay" == "" ]]; then
+    delay=0
+fi
+reboot_block $delay

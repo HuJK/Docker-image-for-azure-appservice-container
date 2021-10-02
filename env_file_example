@@ -21,12 +21,17 @@ FRPC_TOKEN=token_user_1
 FRPC_PROTO=tcp
 FRPC_REMOTE_PORT=8222
 CLOUDFLARED=1
-CLOUDFLARED_CERT=-----BEGIN PRIVATE KEY-----\nAA\n-----END PRIVATE KEY-----\n-----BEGIN CERTIFICATE-----\nAAA==\n-----END CERTIFICATE-----\n-----BEGIN ARGO TUNNEL TOKEN-----\nAAAA\n-----END ARGO TUNNEL TOKEN-----\n
+CLOUDFLARED_TUNNEL_CRET={"AccountTag": "", "TunnelSecret": "", "TunnelID": "", "TunnelName": ""}
 CLOUDFLARED_PORT=8855
+
+AUTOUPDATE=1
+AUTOUPDATE_INTERVAL=86400
+AUTOUPDATE_VERSION_URL=https://raw.githubusercontent.com/HuJK/Docker-image-for-azure-appservice-container/master/move2docker/etc/azc-release
+REBOOT_BOOTON_URL=https://example.com
+
 JUPYTER=1
 JUPYTER_LOCAL_PORT=8855
 JUPYTER_PASSWORD=helloP@ssw0rd
-CLOUDFLARED_DOMAIN=aztext.example.com
 V2RAY=1
 V2RAY_LOCAL_PORT=5555
 V2RAY_PATH=/hidden/v2ray/here

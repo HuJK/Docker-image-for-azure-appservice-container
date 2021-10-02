@@ -1,0 +1,16 @@
+#!/bin/bash
+. /.denv
+if [[ "$AUTOUPDATE" == 1 ]]; then
+  export our=$(cat /etc/azc-release)
+  export remote=$(wget -qO- $AUTOUPDATE_VERSION_URL)
+  echo our=$our remote=$remote
+  if (( our < remote )); then
+    echo "Autoupdate: reboot now"
+    reboot 0
+  fi
+  exec sleep $AUTOUPDATE_INTERVAL
+else
+  echo "autoupdate not set, down"
+  sv down autoupdate
+  exec sleep infinity
+fi

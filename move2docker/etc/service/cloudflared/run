@@ -1,12 +1,12 @@
 #!/bin/bash
 . /.denv
-set -x
 if [[ "$CLOUDFLARED" == 1 ]]; then
   echo "cloudflared enabled"
   mkdir -p /etc/cloudflared
-  printf -- "${CLOUDFLARED_CERT}" > /etc/cloudflared/cert.pem
+  printf -- "${CLOUDFLARED_TUNNEL_CRET}" > /etc/cloudflared/tunnel.json
+  CLOUDFLARED_TUNNEL_NAME=$(echo $CLOUDFLARED_TUNNEL_CRET | jq  -r '.TunnelName')
   pkill cloudflared
-  exec cloudflared --hostname $CLOUDFLARED_DOMAIN --url http://127.0.0.1:81
+  exec cloudflared --credentials-file /etc/cloudflared/tunnel.json --url http://127.0.0.1:81 tunnel run $CLOUDFLARED_TUNNEL_NAME
 else
   echo "cloudflared not enabled, down"
   sv down cloudflared
